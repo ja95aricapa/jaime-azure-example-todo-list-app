@@ -313,3 +313,10 @@ Thumbs.db
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Azurite local storage files
+backend/azure_functions/local.settings.json
+__azurite_db*.json
+__blobstorage__/
+__queuestorage__/
+AzuriteConfig

@@ -36,37 +36,45 @@ function Dashboard() {
 	};
 
 	return (
-		<div style={{ padding: "2rem" }}>
-			<h2>Tareas</h2>
-			<button onClick={() => setModalOpen(true)}>Nueva Tarea</button>
-			<ul>
-				{tasks.map((t) => (
-					<li key={t.id}>
-						{t.title} - {t.status}
-						<button
-							onClick={() => {
-								setEditing(t);
-								setModalOpen(true);
-							}}
-						>
-							Editar
-						</button>
-						<button onClick={() => deleteTask(t.id, token).then(loadTasks)}>
-							Borrar
-						</button>
-					</li>
-				))}
-			</ul>
-			{modalOpen && (
-				<TaskModal
-					task={editing}
-					onSave={handleSave}
-					onClose={() => {
-						setModalOpen(false);
-						setEditing(null);
-					}}
-				/>
-			)}
+		<div style={{ display: "flex", padding: "2rem", gap: "2rem" }}>
+			<div style={{ flex: 2 }}>
+				<h2>Tareas</h2>
+				<button onClick={() => setModalOpen(true)}>Nueva Tarea</button>
+				<ul>
+					{tasks.map((t) => (
+						<li key={t.id}>
+							{t.title} - {t.status}
+							<button
+								onClick={() => {
+									setEditing(t);
+									setModalOpen(true);
+								}}
+							>
+								Editar
+							</button>
+							<button onClick={() => deleteTask(t.id, token).then(loadTasks)}>
+								Borrar
+							</button>
+						</li>
+					))}
+				</ul>
+				{modalOpen && (
+					<TaskModal
+						task={editing}
+						onSave={handleSave}
+						onClose={() => {
+							setModalOpen(false);
+							setEditing(null);
+						}}
+					/>
+				)}
+			</div>
+			<div
+				style={{ flex: 1, borderLeft: "1px solid #ccc", paddingLeft: "2rem" }}
+			>
+				<h2>Perfil</h2>
+				<button onClick={() => navigate("/profile")}>Mi Perfil</button>
+			</div>
 		</div>
 	);
 }
