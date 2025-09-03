@@ -315,6 +315,7 @@ Thumbs.db
 .pnp.*
 
 # Azurite local storage files
+*/local.settings.json
 backend/azure_functions/local.settings.json
 __azurite_db*.json
 __blobstorage__/
